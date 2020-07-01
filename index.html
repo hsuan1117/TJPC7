@@ -24,9 +24,14 @@
 	</head>
 	<body>
 		<script type="text/javascript">
+			window.isFormActived = false
 			$(function(){
+				$("#RegisterForm").click(function(){
+					window.isFormActived = true
+				})
 				$("#HiddenForm").on("load",function(){
-					window.alert("ok!")
+					if(window.isFormActived)window.alert("ok!");
+					
 					$('#RegisterForm').trigger("reset");
 				})
 			})
@@ -229,7 +234,7 @@
 								<h3>連絡方式</h3>
 								<span>
 									總召 羅文謙<br>
-									E-mail: abc@gmail.com
+									E-mail: aatroxvanz@gmail.com
 								</span>
 								<br>
 								<span>
@@ -256,11 +261,11 @@
 							</div>
 							<div class="field">
 								<label for="email">電子郵件/Email</label>
-								<input type="text" name="entry.1941600653" id="email" required>
+								<input type="email" name="entry.1941600653" id="email" required>
 							</div>
 							<div class="field">
 								<label for="entry.1577629849">年級/Grade</label>
-								<select name="entry.1577629849" style="color: #00cc00" required>
+								<select name="entry.1577629849" id="entry.1577629849" style="color: #00cc00" required>
 									<option value="">=====請選擇=====</option>
 									<option value="國一升國二">國一升國二</option>
 									<option value="國二升國三">國二升國三</option>
@@ -269,31 +274,31 @@
 								</select>
 							</div>
 							<div class="field">
-								<label for="entry.1388273797">飲食/Diet</label>
+								<label for="food">飲食/Diet</label>
 								<select name="entry.1388273797" id="food" style="color: #00cc00" required>
 									<option value="葷食">葷食</option>
 									<option value="素食">素食</option>
 								</select>
 							</div>
 							<div class="field">
-								<label for="entry.1084926121">身分證字號/ID Number</label>
+								<label for="peopleid">身分證字號/ID Number</label>
 								<input type="text" name="entry.1084926121" id="peopleid" />
 							</div>
 							<div class="field">
-								<label for="entry.1267281027">出生年月日/Birth Day(yyyy-mm-dd)</label>
+								<label for="birthday">出生年月日/Birth Day(yyyy-mm-dd)</label>
 								<input type="text" name="entry.1267281027" id="birthday" />
 							</div>
 							<div>
-								<label for="entry.1856447165">監護人姓名/Parent's Name</label>
+								<label for="prnm">監護人姓名/Parent's Name</label>
 								<input type="text" name="entry.1856447165" id="prnm" />
 							</div>
 							<!--監護人手機-->
 							<div>
-								<label for="entry.491720712">監護人手機/Parent's phone number</label>
+								<label for="prph">監護人手機/Parent's phone number</label>
 								<input type="text" name="entry.491720712" id="prph" />
 							</div>
 							<div>
-								<label for="entry.1116024679">為什麼想參加此營隊/Why do you want to attend</label>
+								<label for="whytoattend">為什麼想參加此營隊/Why do you want to attend</label>
 								<input type="text" name="entry.1116024679" id="whytoattend" />
 							</div>
 							<div class="field">
