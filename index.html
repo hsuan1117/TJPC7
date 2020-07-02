@@ -34,6 +34,15 @@
 					
 					$('#RegisterForm').trigger("reset");
 				})
+				$("[name='entry.1577629849']").change(function(){
+					if($("[name='entry.1577629849']").val() == "其他"){
+						$("#altGrade").show()
+						$("[id='entry.1577629849']").attr("name","alt_entry.1577629849")
+					}else{
+						$("#altGrade").hide()
+						$("[name='alt_entry.1577629849']").attr("name","entry.1577629849")
+					}
+				})
 			})
 		</script>
 		<!-- Wrapper -->
@@ -272,6 +281,8 @@
 									<option value="國三升高一">國三升高一</option>
 									<option value="其他">其他選項(請自行填寫)</option>
 								</select>
+								<br>
+								<input type="text" name="entry.1577629849" id="altGrade" style="display:none;" required>
 							</div>
 							<div class="field">
 								<label for="food">飲食/Diet</label>
