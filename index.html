@@ -34,13 +34,12 @@
 					
 					$('#RegisterForm').trigger("reset");
 				})
-				$("[name='entry.1577629849']").change(function(){
-					if($("[name='entry.1577629849']").val() == "其他"){
+				$("#GradeSelect").change(function(){
+					$("#altGrade").val($(this).val())
+					if($(this).val() == "其他"){
 						$("#altGrade").show()
-						$("[id='entry.1577629849']").attr("name","alt_entry.1577629849")
 					}else{
 						$("#altGrade").hide()
-						$("[name='alt_entry.1577629849']").attr("name","entry.1577629849")
 					}
 				})
 			})
@@ -274,7 +273,7 @@
 							</div>
 							<div class="field">
 								<label for="entry.1577629849">年級/Grade</label>
-								<select name="entry.1577629849" id="entry.1577629849" style="color: #00cc00" required>
+								<select id="GradeSelect" style="color: #00cc00" required>
 									<option value="">=====請選擇=====</option>
 									<option value="國一升國二">國一升國二</option>
 									<option value="國二升國三">國二升國三</option>
