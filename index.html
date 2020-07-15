@@ -21,27 +21,46 @@
 		<script src="assets/js/util.js"></script>
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 		<script src="assets/js/main.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	</head>
 	<body>
 		<script type="text/javascript">
 			window.isFormActived = false
-			$(function(){
-				$("#RegisterForm").click(function(){
+			window.isValidated   = true
+			$(function() {
+				$("#RegisterForm").click(function() {
 					window.isFormActived = true
 				})
-				$("#HiddenForm").on("load",function(){
-					if(window.isFormActived)window.alert("ok!");
-					
+				$("#HiddenForm").on("load", function() {
+					if (window.isFormActived) {
+						Swal.fire(
+							'表單狀態',
+							'填寫完成',
+							'success'
+						).then(function() {
+							location.reload()
+						})
+					}
+
 					$('#RegisterForm').trigger("reset");
 				})
-				$("#GradeSelect").change(function(){
+				$("#GradeSelect").change(function() {
 					$("#altGrade").val($(this).val())
-					if($(this).val() == "其他"){
+					if ($(this).val() == "其他") {
 						$("#altGrade").show()
-					}else{
+					} else {
 						$("#altGrade").hide()
 					}
 				})
+				$("#btnSubmit").click(function(){
+					$("form input").get().forEach(a=>window.isValidated=window.isValidated&&a.checkValidity())
+					if(window.isValidated){
+						$("form").submit();
+						$("#btnSubmit").attr("disabled",true) 
+						$("#btnSubmit").val("Sending ...")
+					}
+				})
+				
 			})
 		</script>
 		<!-- Wrapper -->
@@ -281,7 +300,7 @@
 									<option value="其他">其他選項(請自行填寫)</option>
 								</select>
 								<br>
-								<input type="text" name="entry.1577629849" id="altGrade" style="display:none;" >
+								<input type="text" name="entry.1577629849" id="altGrade" style="display:none;">
 							</div>
 							<div class="field">
 								<label for="food">飲食/Diet</label>
@@ -316,7 +335,7 @@
 								<textarea name="entry.1223734242" id="entry.1223734242" rows="6"></textarea>
 							</div>
 							<div class="actions">
-								<input type="submit" value="送出" class="special" />
+								<input type="submit" value="送出" class="special" id="btnSubmit" />
 								<!-- <li><input type="reset" value="Clear" /></li> -->
 								<small><span id="display"></span></small>
 							</div>
